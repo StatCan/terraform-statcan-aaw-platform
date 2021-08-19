@@ -3,6 +3,7 @@ resource "kubernetes_namespace" "daaas_system" {
     name = "daaas-system"
 
     labels = {
+      "istio-injection"                                = "enabled"
       "namespace.statcan.gc.ca/purpose"                = "daaas"
       "network.statcan.gc.ca/allow-ingress-controller" = "true"
     }
