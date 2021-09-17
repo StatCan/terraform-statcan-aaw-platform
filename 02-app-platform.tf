@@ -25,6 +25,11 @@ module "app_platform" {
       name                    = "kubeflow"
       hosts                   = ["kubeflow.${var.dns_zone_name}"]
       certificate_secret_name = "wildcard-tls"
+    },
+    {
+      name                    = "authenticated"
+      hosts                   = ["*"],
+      certificate_secret_name = "wildcard-tls"
     }
   ]
 }
