@@ -30,6 +30,11 @@ module "app_platform" {
       name                    = "authenticated"
       hosts                   = ["*"],
       certificate_secret_name = "wildcard-tls"
+    },
+    {
+      name                    = "kfserving"
+      hosts                   = ["*"],
+      certificate_secret_name = "wildcard-tls"
     }
   ]
 }
