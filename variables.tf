@@ -11,6 +11,14 @@ variable "azure_tags" {
   description = "Tags to apply to Azure resources"
 }
 
+variable "subscription_id" {
+  description = "Azure Subscription ID"
+}
+
+variable "tenant_id" {
+  description = "Azure Tenant ID"
+}
+
 variable "administrative_groups" {
   type        = list(string)
   description = "List of administrative groups"

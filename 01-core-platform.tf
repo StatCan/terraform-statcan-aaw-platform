@@ -16,8 +16,8 @@ module "core_platform" {
 
   cluster_name = var.prefix
 
-  subscription_id = data.azurerm_client_config.current.subscription_id
-  tenant_id       = data.azurerm_client_config.current.tenant_id
+  subscription_id = var.subscription_id
+  tenant_id       = var.tenant_id
 
   cluster_resource_group_name      = var.cluster_resource_group_name
   cluster_node_resource_group_name = var.cluster_node_resource_group_name
