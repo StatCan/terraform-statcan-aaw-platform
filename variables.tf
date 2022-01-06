@@ -90,6 +90,12 @@ variable "kubecost_product_key" {
 
 }
 
+variable "kubecost_prometheus_node_selector" {
+  description = "The nodeSelector to apply to the Prometheus instance backing Kubecost."
+  type        = map(string)
+  default     = {}
+}
+
 variable "kubecost_storage_account" {
 
 }
