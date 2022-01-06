@@ -12,7 +12,7 @@ module "core_platform" {
     module.platform_infrastructure
   ]
 
-  source = "git::https://gitlab.k8s.cloud.statcan.ca/cloudnative/terraform/modules/terraform-statcan-kubernetes-core-platform.git?ref=v1.0.11"
+  source = "git::https://gitlab.k8s.cloud.statcan.ca/cloudnative/terraform/modules/terraform-statcan-kubernetes-core-platform.git?ref=v1.1.0"
 
   cluster_name = var.prefix
 
@@ -34,16 +34,17 @@ module "core_platform" {
   cert_manager_subscription_id     = var.dns_zone_subscription_id
 
   # kubecost
-  kubecost_cluster_profile    = var.kubecost_cluster_profile
-  kubecost_token              = var.kubecost_token
-  kubecost_client_id          = var.kubecost_client_id
-  kubecost_client_secret      = var.kubecost_client_secret
-  kubecost_product_key        = var.kubecost_product_key
-  kubecost_storage_account    = var.kubecost_storage_account
-  kubecost_storage_access_key = var.kubecost_storage_access_key
-  kubecost_storage_container  = var.kubecost_storage_container
-  kubecost_shared_namespaces  = var.kubecost_shared_namespaces
-  kubecost_slack_token        = var.kubecost_slack_token
+  kubecost_cluster_profile          = var.kubecost_cluster_profile
+  kubecost_token                    = var.kubecost_token
+  kubecost_client_id                = var.kubecost_client_id
+  kubecost_client_secret            = var.kubecost_client_secret
+  kubecost_product_key              = var.kubecost_product_key
+  kubecost_prometheus_node_selector = var.kubecost_prometheus_node_selector
+  kubecost_storage_account          = var.kubecost_storage_account
+  kubecost_storage_access_key       = var.kubecost_storage_access_key
+  kubecost_storage_container        = var.kubecost_storage_container
+  kubecost_shared_namespaces        = var.kubecost_shared_namespaces
+  kubecost_slack_token              = var.kubecost_slack_token
 
   # vault
   vault_address = var.vault_address
