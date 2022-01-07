@@ -35,6 +35,11 @@ module "app_platform" {
       name                    = "kfserving"
       hosts                   = ["*"],
       certificate_secret_name = "wildcard-tls"
+    },
+    {
+      name                    = "protected-b"
+      hosts                   = ["*"],
+      certificate_secret_name = "wildcard-tls"
     }
   ]
 }
