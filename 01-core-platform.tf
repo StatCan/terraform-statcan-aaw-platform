@@ -12,7 +12,7 @@ module "core_platform" {
     module.platform_infrastructure
   ]
 
-  source = "git::https://gitlab.k8s.cloud.statcan.ca/cloudnative/terraform/modules/terraform-statcan-kubernetes-core-platform.git?ref=v1.2.0"
+  source = "git::https://gitlab.k8s.cloud.statcan.ca/cloudnative/terraform/modules/terraform-statcan-kubernetes-core-platform.git?ref=v1.2.1"
 
   cluster_name = var.prefix
 
@@ -55,4 +55,7 @@ module "core_platform" {
   velero_identity_id         = module.platform_infrastructure.velero_identity_id
   velero_storage_account     = module.platform_infrastructure.velero_storage_account_name
   velero_storage_bucket      = module.platform_infrastructure.velero_storage_bucket_name
+
+  # Fluentd
+  global_fluentd_config = var.global_fluentd_config
 }
