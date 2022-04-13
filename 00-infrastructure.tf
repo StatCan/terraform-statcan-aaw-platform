@@ -4,7 +4,7 @@
 
 # Stage 1a: Deploy infrastructure components required for the platform
 module "platform_infrastructure" {
-  source = "git::https://github.com/statcan/terraform-statcan-azure-cloud-native-platform-infrastructure.git?ref=v1.0.0"
+  source = "git::https://github.com/statcan/terraform-azure-statcan-cloud-native-platform-infrastructure.git?ref=v1.0.0"
 
   prefix       = var.prefix
   azure_region = var.azure_region
