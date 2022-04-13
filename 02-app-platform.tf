@@ -13,33 +13,29 @@ module "app_platform" {
     module.core_platform,
   ]
 
-  source = "git::https://github.com/statcan/terraform-statcan-kubernetes-app-platform.git?ref=v2.0.0"
+  source = "git::https://github.com/statcan/terraform-statcan-kubernetes-app-platform.git?ref=v2.0.1"
 
   cluster_name          = var.prefix
   ingress_domain        = var.dns_zone_name
   administrative_groups = var.administrative_groups
 
   load_balancer_subnet = var.load_balancer_subnet
-  additional_istio_ingress_gateways = [
-    {
-      name                    = "kubeflow"
+  additional_istio_ingress_gateways = {
+    "kubeflow" = {
       hosts                   = ["kubeflow.${var.dns_zone_name}"]
       certificate_secret_name = "wildcard-tls"
     },
-    {
-      name                    = "authenticated"
+    "authenticated" = {
       hosts                   = ["*"],
       certificate_secret_name = "wildcard-tls"
     },
-    {
-      name                    = "kfserving"
+    "kfserving" = {
       hosts                   = ["*"],
       certificate_secret_name = "wildcard-tls"
     },
-    {
-      name                    = "protected-b"
+    "protected-b" = {
       hosts                   = ["*"],
       certificate_secret_name = "wildcard-tls"
     }
-  ]
+  }
 }
