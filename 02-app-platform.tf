@@ -13,7 +13,7 @@ module "app_platform" {
     module.core_platform,
   ]
 
-  source = "git::https://github.com/statcan/terraform-statcan-kubernetes-app-platform.git?ref=v2.0.2"
+  source = "git::https://github.com/statcan/terraform-statcan-kubernetes-app-platform.git?ref=v2.0.3"
 
   cluster_name          = var.prefix
   ingress_domain        = var.dns_zone_name
