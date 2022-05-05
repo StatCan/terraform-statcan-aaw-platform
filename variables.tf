@@ -122,6 +122,12 @@ variable "vault_address" {
 
 }
 
+# Prometheus
+
+variable "prometheus_disk_size" {
+  default = "80Gi"
+}
+
 # Fluentd
 variable "global_fluentd_config" {
   description = "Global Fluentd config, usually used to define the default plugin"

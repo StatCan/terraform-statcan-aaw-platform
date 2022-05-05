@@ -12,7 +12,7 @@ module "core_platform" {
     module.platform_infrastructure
   ]
 
-  source = "git::https://github.com/statcan/terraform-statcan-kubernetes-core-platform.git?ref=v1.2.2"
+  source = "git::https://github.com/statcan/terraform-statcan-kubernetes-core-platform.git?ref=v1.3.0"
 
   cluster_name = var.prefix
 
@@ -45,6 +45,9 @@ module "core_platform" {
   kubecost_storage_container        = var.kubecost_storage_container
   kubecost_shared_namespaces        = var.kubecost_shared_namespaces
   kubecost_slack_token              = var.kubecost_slack_token
+
+  # prometheus
+  prometheus_disk_size = var.prometheus_disk_size
 
   # vault
   vault_address = var.vault_address
