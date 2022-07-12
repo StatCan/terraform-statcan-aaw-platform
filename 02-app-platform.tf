@@ -13,11 +13,14 @@ module "app_platform" {
     module.core_platform,
   ]
 
-  source = "git::https://github.com/statcan/terraform-statcan-kubernetes-app-platform.git?ref=v2.3.2"
+  source = "git::https://github.com/statcan/terraform-statcan-kubernetes-app-platform.git?ref=v2.3.3"
 
   cluster_name          = var.prefix
   ingress_domain        = var.dns_zone_name
   administrative_groups = var.administrative_groups
+
+  # Extra namespaces that the IstioOperator should watch
+  istio_operator_additional_watch_namespaces = ["cloud-main-system"]
 
   load_balancer_subnet = var.load_balancer_subnet
   additional_istio_ingress_gateways = {
