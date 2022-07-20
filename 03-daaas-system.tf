@@ -7,6 +7,10 @@ resource "kubernetes_namespace" "daaas_system" {
       "namespace.statcan.gc.ca/purpose"                = "daaas"
       "network.statcan.gc.ca/allow-ingress-controller" = "true"
     }
+
+    annotations = {
+      "logging.csp.vmware.com/fluentd-configmap" = "daaas-fluentd-config"
+    }
   }
 }
 
