@@ -68,6 +68,16 @@ variable "infrastructure_pipeline_subnet_ids" {
   default = []
 }
 
+# Grafana
+
+variable "grafana_client_id" {
+
+}
+
+variable "grafana_client_secret" {
+
+}
+
 # KubeCost
 
 variable "kubecost_cluster_profile" {
