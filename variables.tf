@@ -68,6 +68,42 @@ variable "infrastructure_pipeline_subnet_ids" {
   default = []
 }
 
+# gatekeeper controller pods
+
+variable "gk_limits_cpu" {
+
+}
+
+variable "gk_requests_cpu" {
+
+}
+
+variable "gk_limits_memory" {
+
+}
+
+variable "gk_requests_memory" {
+
+}
+
+# gatekeeper audit pods
+
+variable "gk_audit_limits_cpu" {
+
+}
+
+variable "gk_audit_requests_cpu" {
+
+}
+
+variable "gk_audit_limits_memory" {
+
+}
+
+variable "gk_audit_requests_memory" {
+
+}
+
 # Grafana
 
 variable "grafana_client_id" {

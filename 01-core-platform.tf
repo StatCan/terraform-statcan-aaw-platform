@@ -33,6 +33,17 @@ module "core_platform" {
   cert_manager_hosted_zone_name    = var.dns_zone_name
   cert_manager_subscription_id     = var.dns_zone_subscription_id
 
+  # gatekeeper
+  opa_limits_cpu      = var.gk_limits_cpu
+  opa_limits_memory   = var.gk_limits_memory
+  opa_requests_cpu    = var.gk_requests_cpu
+  opa_requests_memory = var.gk_requests_memory
+
+  opa_audit_limits_cpu      = var.gk_audit_limits_cpu
+  opa_audit_limits_memory   = var.gk_audit_limits_memory
+  opa_audit_requests_cpu    = var.gk_audit_requests_cpu
+  opa_audit_requests_memory = var.gk_audit_requests_memory
+
   # grafana
   grafana_client_id     = var.grafana_client_id
   grafana_client_secret = var.grafana_client_secret
