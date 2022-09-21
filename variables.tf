@@ -174,6 +174,12 @@ variable "prometheus_disk_size" {
   default = "80Gi"
 }
 
+variable "additional_alertmanagers" {
+  description = "List of additional Alertmanager targets for the Platform Prometheus"
+  type        = list(string)
+  default     = []
+}
+
 # Fluentd
 variable "global_fluentd_config" {
   description = "Global Fluentd config, usually used to define the default plugin"
