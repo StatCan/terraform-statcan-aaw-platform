@@ -12,7 +12,7 @@ module "core_platform" {
     module.platform_infrastructure
   ]
 
-  source = "git::https://github.com/statcan/terraform-statcan-kubernetes-core-platform.git?ref=v1.8.0"
+  source = "git::https://github.com/statcan/terraform-statcan-kubernetes-core-platform.git?ref=v2.0.0"
 
   cluster_name = var.prefix
 
