@@ -70,6 +70,10 @@ variable "infrastructure_pipeline_subnet_ids" {
 
 # gatekeeper controller pods
 
+variable "gk_replicas" {
+
+}
+
 variable "gk_limits_cpu" {
 
 }

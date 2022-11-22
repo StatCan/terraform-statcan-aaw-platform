@@ -12,7 +12,7 @@ module "core_platform" {
     module.platform_infrastructure
   ]
 
-  source = "git::https://gitlab.k8s.cloud.statcan.ca/cloudnative/terraform/modules/terraform-statcan-kubernetes-core-platform.git?ref=v2.3.1"
+  source = "git::https://gitlab.k8s.cloud.statcan.ca/cloudnative/terraform/modules/terraform-statcan-kubernetes-core-platform.git?ref=v2.4.0"
 
   cluster_name = var.prefix
 
@@ -34,6 +34,8 @@ module "core_platform" {
   cert_manager_subscription_id     = var.dns_zone_subscription_id
 
   # gatekeeper
+  gk_replicas        = var.gk_replicas
+  
   gk_limits_cpu      = var.gk_limits_cpu
   gk_limits_memory   = var.gk_limits_memory
   gk_requests_cpu    = var.gk_requests_cpu
