@@ -34,7 +34,7 @@ module "core_platform" {
   cert_manager_subscription_id     = var.dns_zone_subscription_id
 
   # gatekeeper
-  gk_replicas        = var.gk_replicas
+  gk_replicas = var.gk_replicas
   
   gk_limits_cpu      = var.gk_limits_cpu
   gk_limits_memory   = var.gk_limits_memory
