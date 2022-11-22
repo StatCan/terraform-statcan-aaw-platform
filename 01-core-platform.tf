@@ -35,7 +35,7 @@ module "core_platform" {
 
   # gatekeeper
   gk_replicas = var.gk_replicas
-  
+
   gk_limits_cpu      = var.gk_limits_cpu
   gk_limits_memory   = var.gk_limits_memory
   gk_requests_cpu    = var.gk_requests_cpu
