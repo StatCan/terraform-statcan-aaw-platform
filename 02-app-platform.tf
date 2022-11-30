@@ -13,7 +13,7 @@ module "app_platform" {
     module.core_platform,
   ]
 
-  source = "git::https://github.com/statcan/terraform-statcan-kubernetes-app-platform.git?ref=v2.4.5"
+  source = "git::https://gitlab.k8s.cloud.statcan.ca/cloudnative/terraform/modules/terraform-statcan-kubernetes-app-platform.git?ref=v2.5.0"
 
   cluster_name          = var.prefix
   ingress_domain        = var.dns_zone_name
@@ -40,5 +40,13 @@ module "app_platform" {
       hosts                   = ["*"],
       certificate_secret_name = "wildcard-tls"
     }
+  }
+
+  kiali_prometheus_url = "http://${module.core_platform.kube_prometheus_stack_release_name}-prometheus.${module.core_platform.kube_prometheus_stack_namespace_name}:9090"
+
+  kiali_grafana_configurations = {
+    in_cluster_url = "http://${module.core_platform.kube_prometheus_stack_release_name}-grafana.${module.core_platform.kube_prometheus_stack_namespace_name}:80",
+    url            = module.core_platform.grafana_url,
+    token          = var.kiali_grafana_token,
   }
 }
