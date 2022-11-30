@@ -64,8 +64,9 @@ module "core_platform" {
   kubecost_slack_token              = var.kubecost_slack_token
 
   # prometheus
-  prometheus_disk_size     = var.prometheus_disk_size
   additional_alertmanagers = var.additional_alertmanagers
+  prometheus_disk_size     = var.prometheus_disk_size
+  prometheus_resources     = var.prometheus_resources
 
   # vault
   vault_address = var.vault_address
