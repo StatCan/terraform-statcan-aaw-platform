@@ -184,6 +184,18 @@ variable "additional_alertmanagers" {
   default     = []
 }
 
+variable "prometheus_resources" {
+  description = "The limits and requests to set on the Prometheus pod."
+  type = object({
+    limits   = optional(map(string), {}),
+    requests = optional(map(string), {}),
+  })
+  default = {
+    limits   = {},
+    requests = {},
+  }
+}
+
 # Fluentd
 variable "global_fluentd_config" {
   description = "Global Fluentd config, usually used to define the default plugin"
