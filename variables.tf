@@ -200,5 +200,5 @@ EOF
 variable "kiali_grafana_token" {
   sensitive   = true
   description = "The token used to authentiate Kiali to Grafana."
-  default     = null
+  default     = ""
 }
