@@ -218,8 +218,8 @@ variable "kiali_grafana_token" {
 variable "kiali_resources" {
   description = "The limits and requests to set on the Kiali pod."
   type = object({
-    limits   = optional(map(string), {}),
-    requests = optional(map(string), {}),
+    limits   = optional(object({}), {}),
+    requests = optional(object({}), {}),
   })
   default = {
     limits   = {},
