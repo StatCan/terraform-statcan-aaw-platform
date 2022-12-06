@@ -13,7 +13,7 @@ module "app_platform" {
     module.core_platform,
   ]
 
-  source = "git::https://gitlab.k8s.cloud.statcan.ca/cloudnative/terraform/modules/terraform-statcan-kubernetes-app-platform.git?ref=v2.5.1"
+  source = "git::https://gitlab.k8s.cloud.statcan.ca/cloudnative/terraform/modules/terraform-statcan-kubernetes-app-platform.git?ref=v2.6.0"
 
   cluster_name          = var.prefix
   ingress_domain        = var.dns_zone_name
@@ -49,4 +49,5 @@ module "app_platform" {
     url            = module.core_platform.grafana_url,
     token          = var.kiali_grafana_token,
   }
+  kiali_resources = var.kiali_resources
 }

@@ -214,3 +214,21 @@ variable "kiali_grafana_token" {
   description = "The token used to authentiate Kiali to Grafana."
   default     = ""
 }
+
+variable "kiali_resources" {
+  description = "The limits and requests to set on the Kiali pod."
+  type = object({
+    limits   = optional(map(string), {}),
+    requests = optional(map(string), {}),
+  })
+  default = {
+    limits   = {},
+    requests = {},
+  }
+  nullable = false
+
+  validation {
+    condition     = var.kiali_resources.limits != null && var.kiali_resources.requests != null
+    error_message = "Limits and requests cannot be null."
+  }
+}
