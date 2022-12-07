@@ -13,7 +13,7 @@ module "app_platform" {
     module.core_platform,
   ]
 
-  source = "git::https://gitlab.k8s.cloud.statcan.ca/cloudnative/terraform/modules/terraform-statcan-kubernetes-app-platform.git?ref=v2.6.1"
+  source = "git::https://gitlab.k8s.cloud.statcan.ca/cloudnative/terraform/modules/terraform-statcan-kubernetes-app-platform.git?ref=v2.6.2"
 
   cluster_name          = var.prefix
   ingress_domain        = var.dns_zone_name
@@ -42,6 +42,7 @@ module "app_platform" {
     }
   }
 
+  # Kiali configurations
   kiali_prometheus_url = "http://${module.core_platform.kube_prometheus_stack_release_name}-prometheus.${module.core_platform.kube_prometheus_stack_namespace_name}:9090"
 
   kiali_grafana_configurations = {
