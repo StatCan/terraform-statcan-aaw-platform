@@ -13,11 +13,15 @@ module "app_platform" {
     module.core_platform,
   ]
 
-  source = "git::https://gitlab.k8s.cloud.statcan.ca/cloudnative/terraform/modules/terraform-statcan-kubernetes-app-platform.git?ref=v2.6.2"
+  source = "git::https://gitlab.k8s.cloud.statcan.ca/cloudnative/terraform/modules/terraform-statcan-kubernetes-app-platform.git?ref=v2.7.0"
 
   cluster_name          = var.prefix
   ingress_domain        = var.dns_zone_name
   administrative_groups = var.administrative_groups
+
+  # Istio Mesh config
+  meshconfig_zipkin_address = var.meshconfig_zipkin_address
+  meshconfig_enable_tracing = var.meshconfig_enable_tracing
 
   # Extra namespaces that the IstioOperator should watch
   istio_operator_additional_watch_namespaces = ["cloud-main-system"]
