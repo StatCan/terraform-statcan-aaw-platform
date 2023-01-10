@@ -252,3 +252,15 @@ variable "kiali_resources" {
     error_message = "CPU and memory requests cannot be null."
   }
 }
+
+variable "meshconfig_zipkin_address" {
+  description = "The URL to send zipkin compatible traces to"
+  default     = "zipkin.istio-system:9411"
+  type        = string
+}
+
+variable "meshconfig_enable_tracing" {
+  description = "Flag to control generation of trace spans and request IDs."
+  default     = false
+  type        = bool
+}
