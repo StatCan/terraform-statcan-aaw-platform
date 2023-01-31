@@ -264,3 +264,13 @@ variable "meshconfig_enable_tracing" {
   default     = false
   type        = bool
 }
+
+# Argo Workflows
+
+variable "argo_workflows_client_id" {
+  description = "The Client ID for Argo Workflows"
+}
+
+variable "argo_workflows_client_secret" {
+  description = "The Client Secret for Argo Workflows"
+}
