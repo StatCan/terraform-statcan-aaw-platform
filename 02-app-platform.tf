@@ -13,9 +13,10 @@ module "app_platform" {
     module.core_platform,
   ]
 
-  source = "git::https://gitlab.k8s.cloud.statcan.ca/cloudnative/terraform/modules/terraform-statcan-kubernetes-app-platform.git?ref=v3.0.0"
+  source = "git::https://gitlab.k8s.cloud.statcan.ca/cloudnative/terraform/modules/terraform-statcan-kubernetes-app-platform.git?ref=v3.1.0"
 
   cluster_name          = var.prefix
+  tenant_id             = var.tenant_id
   ingress_domain        = var.dns_zone_name
   administrative_groups = var.administrative_groups
 
@@ -54,5 +55,14 @@ module "app_platform" {
     url            = module.core_platform.grafana_url,
     token          = var.kiali_grafana_token,
   }
+
   kiali_resources = var.kiali_resources
+
+  # Argo Workflows
+
+  argo_workflows_client_id                 = var.argo_workflows_client_id
+  argo_workflows_client_secret             = var.argo_workflows_client_secret
+  platform_workflows_storage_account_name  = module.platform_infrastructure.platform_workflows_storage_account_name
+  platform_workflows_primary_access_key    = module.platform_infrastructure.platform_workflows_primary_access_key
+  platform_workflows_primary_blob_endpoint = module.platform_infrastructure.platform_workflows_primary_blob_endpoint
 }
