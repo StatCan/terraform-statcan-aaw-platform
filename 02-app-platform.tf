@@ -13,7 +13,7 @@ module "app_platform" {
     module.core_platform,
   ]
 
-  source = "git::https://gitlab.k8s.cloud.statcan.ca/cloudnative/terraform/modules/terraform-statcan-kubernetes-app-platform.git?ref=v3.1.4"
+  source = "git::https://gitlab.k8s.cloud.statcan.ca/cloudnative/terraform/modules/terraform-statcan-kubernetes-app-platform.git?ref=v4.0.0"
 
   cluster_name          = var.prefix
   tenant_id             = var.tenant_id
@@ -30,20 +30,24 @@ module "app_platform" {
   load_balancer_subnet = var.load_balancer_subnet
   additional_istio_ingress_gateways = {
     "kubeflow" = {
-      hosts                   = ["kubeflow.${var.dns_zone_name}"]
-      certificate_secret_name = "kubeflow-tls"
+      hosts                   = ["kubeflow.${var.dns_zone_name}"],
+      certificate_secret_name = "kubeflow-tls",
+      dns_names               = ["kubeflow.${var.dns_zone_name}", "*.${var.dns_zone_name}"]
     },
     "authenticated" = {
-      hosts                   = ["*.auth.${var.dns_zone_name}", "*.${var.dns_zone_name}"],
-      certificate_secret_name = "authenticated-tls"
+      hosts                   = ["*"],
+      certificate_secret_name = "authenticated-tls",
+      dns_names               = ["*.auth.${var.dns_zone_name}", "*.${var.dns_zone_name}"]
     },
     "kfserving" = {
-      hosts                   = ["*.${var.dns_zone_name}"],
-      certificate_secret_name = "kfserving-tls"
+      hosts                   = ["*"],
+      certificate_secret_name = "kfserving-tls",
+      dns_names               = ["*.${var.dns_zone_name}"]
     },
     "protected-b" = {
-      hosts                   = ["*.protected-b.${var.dns_zone_name}"],
-      certificate_secret_name = "protected-b-tls"
+      hosts                   = ["*"],
+      certificate_secret_name = "protected-b-tls",
+      dns_names               = ["*.protected-b.${var.dns_zone_name}", "*.${var.dns_zone_name}"]
     }
   }
 
