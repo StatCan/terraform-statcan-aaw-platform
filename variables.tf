@@ -202,12 +202,12 @@ variable "prometheus_additional_scrape_config" {
   metric_relabel_configs:
   - source_labels: [persistentvolumeclaim]
     separator: ;
-    regex: (unclassified|protected-b|unclassified-ro)
+    regex: (aaw-unclassified|aaw-protected-b|aaw-unclassified-ro|fdi.*unclassified|fdi.*protected-b)
     replacement: $1
     action: drop
   - source_labels: [persistentvolume]
     separator: ;
-    regex: (.*unclassified|.*protected-b|.*unclassified-ro)
+    regex: (.*aaw-unclassified|.*aaw-protected-b|.*aaw-unclassified-ro|.*fdi-protected-b.*|.*fdi-unclassified.*)
     replacement: $1
     action: drop
 EOF
