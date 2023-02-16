@@ -13,10 +13,12 @@ variable "azure_tags" {
 
 variable "subscription_id" {
   description = "Azure Subscription ID"
+  sensitive   = true
 }
 
 variable "tenant_id" {
   description = "Azure Tenant ID"
+  sensitive   = true
 }
 
 variable "administrative_groups" {
@@ -34,10 +36,12 @@ variable "cluster_node_resource_group_name" {
 
 variable "kubernetes_identity_object_id" {
   description = "Kubernetes identity object ID"
+  sensitive   = true
 }
 
 variable "aks_system_subnet_id" {
   description = "AKS System subnet ID"
+  sensitive   = true
 }
 
 variable "dns_zone_name" {
@@ -46,6 +50,7 @@ variable "dns_zone_name" {
 
 variable "dns_zone_id" {
   description = "Azure DNS Zone ID"
+  sensitive   = true
 }
 
 variable "dns_zone_resource_group_name" {
@@ -54,6 +59,7 @@ variable "dns_zone_resource_group_name" {
 
 variable "dns_zone_subscription_id" {
   description = "Azure DNS Zone ID"
+  sensitive   = true
 }
 
 variable "load_balancer_subnet" {
@@ -111,10 +117,12 @@ variable "gk_audit_requests_memory" {
 # Grafana
 
 variable "grafana_client_id" {
+  sensitive = true
 
 }
 
 variable "grafana_client_secret" {
+  sensitive = true
 
 }
 
@@ -125,18 +133,22 @@ variable "kubecost_cluster_profile" {
 }
 
 variable "kubecost_token" {
+  sensitive = true
 
 }
 
 variable "kubecost_client_id" {
+  sensitive = true
 
 }
 
 variable "kubecost_client_secret" {
+  sensitive = true
 
 }
 
 variable "kubecost_product_key" {
+  sensitive = true
 
 }
 
@@ -151,6 +163,7 @@ variable "kubecost_storage_account" {
 }
 
 variable "kubecost_storage_access_key" {
+  sensitive = true
 
 }
 
@@ -163,6 +176,7 @@ variable "kubecost_shared_namespaces" {
 }
 
 variable "kubecost_slack_token" {
+  sensitive = true
 
 }
 
@@ -269,8 +283,10 @@ variable "meshconfig_enable_tracing" {
 
 variable "argo_workflows_client_id" {
   description = "The Client ID for Argo Workflows"
+  sensitive   = true
 }
 
 variable "argo_workflows_client_secret" {
   description = "The Client Secret for Argo Workflows"
+  sensitive   = true
 }
