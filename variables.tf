@@ -198,6 +198,35 @@ variable "additional_alertmanagers" {
   default     = []
 }
 
+variable "prometheus_additional_scrape_config" {
+  description = "Default additional scrape configuration for prometheus"
+
+  default = <<EOF
+- job_name: kubecost
+  honor_labels: true
+  scrape_interval: 1m
+  scrape_timeout: 10s
+  metrics_path: /metrics
+  scheme: http
+  dns_sd_configs:
+  - names:
+    - kubecost-cost-analyzer.kubecost-system
+    type: 'A'
+    port: 9003
+  metric_relabel_configs:
+  - source_labels: [persistentvolumeclaim]
+    separator: ;
+    regex: (aaw-unclassified|aaw-protected-b|aaw-unclassified-ro|fdi.*unclassified|fdi.*protected-b)
+    replacement: $1
+    action: drop
+  - source_labels: [persistentvolume]
+    separator: ;
+    regex: (.*aaw-unclassified|.*aaw-protected-b|.*aaw-unclassified-ro|.*fdi-protected-b.*|.*fdi-unclassified.*)
+    replacement: $1
+    action: drop
+EOF
+}
+
 variable "prometheus_resources" {
   description = "The limits and requests to set on the Prometheus pod."
   type = object({
