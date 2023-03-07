@@ -32,7 +32,7 @@ module "app_platform" {
     "kubeflow" = {
       hosts                   = ["kubeflow.${var.dns_zone_name}"],
       certificate_secret_name = "kubeflow-tls",
-      dns_names               = ["kubeflow.${var.dns_zone_name}", "*.${var.dns_zone_name}"]
+      dns_names               = ["*.${var.dns_zone_name}"]
     },
     "authenticated" = {
       hosts                   = ["*"],
