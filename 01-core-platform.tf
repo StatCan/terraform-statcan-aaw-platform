@@ -12,7 +12,7 @@ module "core_platform" {
     module.platform_infrastructure
   ]
 
-  source = "git::https://gitlab.k8s.cloud.statcan.ca/cloudnative/terraform/modules/terraform-statcan-kubernetes-core-platform.git?ref=v2.12.1"
+  source = "git::https://gitlab.k8s.cloud.statcan.ca/cloudnative/terraform/modules/terraform-statcan-kubernetes-core-platform.git?ref=v2.13.0"
 
   cluster_name = var.prefix
 
@@ -62,6 +62,8 @@ module "core_platform" {
   kubecost_storage_container        = var.kubecost_storage_container
   kubecost_shared_namespaces        = var.kubecost_shared_namespaces
   kubecost_slack_token              = var.kubecost_slack_token
+  kubecost_alert_slack_webhook_url  = var.kubecost_alert_slack_webhook_url
+  kubecost_additional_alert_config  = var.kubecost_additional_alert_config
 
   # prometheus
   additional_alertmanagers            = var.additional_alertmanagers
