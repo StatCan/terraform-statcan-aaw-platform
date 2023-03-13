@@ -180,6 +180,22 @@ variable "kubecost_slack_token" {
 
 }
 
+variable "kubecost_alert_slack_webhook_url" {
+  sensitive   = true
+  description = "Kubecost global url for reporting alerts"
+  default     = "https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX"
+}
+
+variable "kubecost_additional_alert_config" {
+  description = "Additional alerts for kubecost to pick up. Default should never trigger"
+  default     = <<EOF
+- type: budget
+  threshold: 100000000000000
+  window: 1d
+  aggregation: namespace
+  filter: default
+EOF
+}
 # Vault
 
 variable "vault_address" {
