@@ -13,7 +13,7 @@ module "app_platform" {
     module.core_platform,
   ]
 
-  source = "git::https://gitlab.k8s.cloud.statcan.ca/cloudnative/terraform/modules/terraform-statcan-kubernetes-app-platform.git?ref=v4.2.0"
+  source = "git::https://gitlab.k8s.cloud.statcan.ca/cloudnative/terraform/modules/terraform-statcan-kubernetes-app-platform.git?ref=v4.3.0"
 
   cluster_name          = var.prefix
   tenant_id             = var.tenant_id
