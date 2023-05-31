@@ -12,7 +12,7 @@ module "core_platform" {
     module.platform_infrastructure
   ]
 
-  source = "git::https://gitlab.k8s.cloud.statcan.ca/cloudnative/terraform/modules/terraform-statcan-kubernetes-core-platform.git?ref=v2.17.0"
+  source = "git::https://gitlab.k8s.cloud.statcan.ca/cloudnative/terraform/modules/terraform-statcan-kubernetes-core-platform.git?ref=v2.18.0"
 
   cluster_name = var.prefix
 
@@ -83,4 +83,9 @@ module "core_platform" {
 
   # Fluentd
   global_fluentd_config = var.global_fluentd_config
+
+  # Platform Event Logging
+  logging_elasticsearch_url      = var.logging_elasticsearch_url
+  logging_elasticsearch_username = var.logging_elasticsearch_username
+  logging_elasticsearch_password = var.logging_elasticsearch_password
 }

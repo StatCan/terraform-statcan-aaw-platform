@@ -335,3 +335,21 @@ variable "argo_workflows_client_secret" {
   description = "The Client Secret for Argo Workflows"
   sensitive   = true
 }
+
+# Platform Event Logging
+
+variable "logging_elasticsearch_url" {
+  description = "URL to elasticsearch for logging"
+}
+
+variable "logging_elasticsearch_username" {
+  description = "Elasticsearch username for logging"
+  default     = ""
+  sensitive   = true
+}
+
+variable "logging_elasticsearch_password" {
+  description = "Elasticsearch password for logging"
+  default     = ""
+  sensitive   = true
+}
