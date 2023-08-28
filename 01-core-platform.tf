@@ -12,7 +12,7 @@ module "core_platform" {
     module.platform_infrastructure
   ]
 
-  source = "git::https://gitlab.k8s.cloud.statcan.ca/cloudnative/terraform/modules/terraform-statcan-kubernetes-core-platform.git?ref=v2.24.1"
+  source = "git::https://gitlab.k8s.cloud.statcan.ca/cloudnative/terraform/modules/terraform-statcan-kubernetes-core-platform.git?ref=v3.0.0"
 
   cluster_name = var.prefix
 
@@ -51,25 +51,12 @@ module "core_platform" {
   grafana_client_secret = var.grafana_client_secret
 
   # kubecost
-  kubecost_cluster_profile          = var.kubecost_cluster_profile
-  kubecost_token                    = var.kubecost_token
-  kubecost_client_id                = var.kubecost_client_id
-  kubecost_client_secret            = var.kubecost_client_secret
-  kubecost_product_key              = var.kubecost_product_key
-  kubecost_prometheus_node_selector = var.kubecost_prometheus_node_selector
-  kubecost_storage_account          = var.kubecost_storage_account
-  kubecost_storage_access_key       = var.kubecost_storage_access_key
-  kubecost_storage_container        = var.kubecost_storage_container
-  kubecost_shared_namespaces        = var.kubecost_shared_namespaces
-  kubecost_slack_token              = var.kubecost_slack_token
-  kubecost_alert_slack_webhook_url  = var.kubecost_alert_slack_webhook_url
-  kubecost_additional_alert_config  = var.kubecost_additional_alert_config
+  kubecost = var.kubecost
 
   # prometheus
-  additional_alertmanagers            = var.additional_alertmanagers
-  prometheus_disk_size                = var.prometheus_disk_size
-  prometheus_resources                = var.prometheus_resources
-  prometheus_additional_scrape_config = var.prometheus_additional_scrape_config
+  additional_alertmanagers = var.additional_alertmanagers
+  prometheus_disk_size     = var.prometheus_disk_size
+  prometheus_resources     = var.prometheus_resources
 
   # vault
   vault_address = var.vault_address
