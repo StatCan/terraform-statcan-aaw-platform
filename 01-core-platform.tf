@@ -12,7 +12,7 @@ module "core_platform" {
     module.platform_infrastructure
   ]
 
-  source = "git::https://gitlab.k8s.cloud.statcan.ca/cloudnative/terraform/modules/terraform-statcan-kubernetes-core-platform.git?ref=v3.0.0"
+  source = "git::https://gitlab.k8s.cloud.statcan.ca/cloudnative/terraform/modules/terraform-statcan-kubernetes-core-platform.git?ref=v3.1.0"
 
   cluster_name = var.prefix
 
@@ -51,7 +51,15 @@ module "core_platform" {
   grafana_client_secret = var.grafana_client_secret
 
   # kubecost
-  kubecost = var.kubecost
+  # Merge in the configs from the modules variables with some specific ones.
+  kubecost = merge(var.kubecost, {
+    # Use the Authenticated Gateway
+    ingress = {
+      annotations = {
+        "ingress.statcan.gc.ca/gateways" = "istio-system/authenticated-istio-ingress-gateway-https"
+      }
+    }
+  })
 
   # prometheus
   additional_alertmanagers = var.additional_alertmanagers
